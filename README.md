@@ -1,0 +1,2 @@
+# RickAndMortyGraphQL
+RickAndMorty GraphQL API 
