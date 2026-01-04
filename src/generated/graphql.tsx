@@ -209,7 +209,7 @@ export type GetCharactersQueryVariables = Exact<{
 }>;
 
 
-export type GetCharactersQuery = { __typename?: 'Query', characters?: { __typename?: 'Characters', info?: { __typename?: 'Info', pages?: number | null, next?: number | null, prev?: number | null } | null, results?: Array<{ __typename?: 'Character', id?: string | null, name?: string | null, image?: string | null } | null> | null } | null };
+export type GetCharactersQuery = { __typename?: 'Query', characters?: { __typename?: 'Characters', info?: { __typename?: 'Info', pages?: number | null, next?: number | null, prev?: number | null } | null, results?: Array<{ __typename?: 'Character', id?: string | null, name?: string | null, status?: string | null, species?: string | null, gender?: string | null, image?: string | null } | null> | null } | null };
 
 
 export const GetCharactersDocument = gql`
@@ -223,6 +223,9 @@ export const GetCharactersDocument = gql`
     results {
       id
       name
+      status
+      species
+      gender
       image
     }
   }
@@ -253,7 +256,8 @@ export function useGetCharactersLazyQuery(baseOptions?: ApolloReactHooks.LazyQue
           const options = {...defaultOptions, ...baseOptions}
           return ApolloReactHooks.useLazyQuery<GetCharactersQuery, GetCharactersQueryVariables>(GetCharactersDocument, options);
         }
-export function useGetCharactersSuspenseQuery(baseOptions?: ApolloReactHooks.SkipToken | ApolloReactHooks.SuspenseQueryHookOptions<GetCharactersQuery, GetCharactersQueryVariables>): ApolloReactHooks.UseSuspenseQueryResult<GetCharactersQuery | undefined, GetCharactersQueryVariables> {
+export function useGetCharactersSuspenseQuery(baseOptions?: ApolloReactHooks.SkipToken | ApolloReactHooks.SuspenseQueryHookOptions<GetCharactersQuery, GetCharactersQueryVariables>): ApolloReactHooks.UseSuspenseQueryResult<GetCharactersQuery | undefined, GetCharactersQueryVariables>;
+export function useGetCharactersSuspenseQuery(baseOptions?: ApolloReactHooks.SkipToken | ApolloReactHooks.SuspenseQueryHookOptions<GetCharactersQuery, GetCharactersQueryVariables>) {
           const options = baseOptions === ApolloReactHooks.skipToken ? baseOptions : {...defaultOptions, ...baseOptions}
           return ApolloReactHooks.useSuspenseQuery<GetCharactersQuery | undefined, GetCharactersQueryVariables>(GetCharactersDocument, options);
         }

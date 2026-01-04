@@ -26,6 +26,8 @@
   border-radius: 10px;
   box-shadow: 0 1px 3px rgba(16,24,40,0.06);
   transition: transform 120ms ease, box-shadow 120ms ease;
+  min-height: 140px;
+  height: 140px;
 }
 .character-card:hover {
   transform: translateY(-6px);
@@ -34,11 +36,11 @@
 
 .avatar,
 .avatar.placeholder {
-  width: 64px;
-  height: 64px;
+  width: 100px;
+  height: 100px;
   border-radius: 8px;
   object-fit: cover;
-  flex: 0 0 64px;
+  flex: 0 0 100px;
 }
 
 .avatar.placeholder {
@@ -53,12 +55,51 @@
 .character-info {
   display: flex;
   flex-direction: column;
+  gap: 6px;
+  justify-content: center;
+  text-align: left;
+  flex: 1;
 }
 
 .name {
   font-weight: 700;
   font-size: 1rem;
   color: var(--text-color, #111827);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.species,
+.status,
+.gender {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  width: fit-content;
+  text-transform: capitalize;
+  margin-right: 4px;
+}
+
+.species {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+  color: #ffffff;
+}
+
+.status {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+}
+
+.status[class*="Dead"] {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff;
+}
+
+.gender {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff;
 }
 
 .caption {

@@ -28,13 +28,16 @@ export const CharactersList: React.FC = () => {
         {results.map((c) => (c ? (
           <li key={c.id} className="character-card">
             {c.image ? (
-              <img className="avatar" src={c.image} alt={c.name ?? 'character'} width={64} height={64} />
+              <img className="avatar" src={c.image} alt={c.name ?? 'character'} width={100} height={100} />
             ) : (
               <div className="avatar placeholder" aria-hidden>{(c.name && c.name[0]) ?? '?'}</div>
             )}
 
             <div className="character-info">
               <span className="name">{c.name}</span>
+              <span className="species">{c.species}</span>
+              <span className="gender">{c.gender}</span>
+              <span className="status">{c.status}</span>           
             </div>
           </li>
         ) : null))}

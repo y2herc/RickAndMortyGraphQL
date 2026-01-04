@@ -10,6 +10,9 @@ query GetCharacters($page: Int) {
     results {
       id
       name
+      status
+      species
+      gender
       image
     }
   }
