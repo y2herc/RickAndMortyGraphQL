@@ -1,5 +1,5 @@
 
-import './App.css'
+import './styles/App.css'
 import { CharactersList } from './componenets/CharactersList'
 
 function App() {
