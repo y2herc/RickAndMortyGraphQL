@@ -1,0 +1,16 @@
+# GraphQL operations (queries/mutations/fragments) only — no JS/TS imports or code here.
+
+query GetCharacters($page: Int) {
+  characters(page: $page) {
+    info {
+      pages
+      next
+      prev
+    }
+    results {
+      id
+      name
+      image
+    }
+  }
+}
