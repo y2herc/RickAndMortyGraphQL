@@ -1,24 +1,23 @@
 // src/components/CharactersList.tsx
 import { useState, useMemo } from 'react';
-import { useQuery } from '@apollo/client/react';
-import { GetCharactersDocument } from '../generated/graphql';
+import { useGetCharactersQuery } from '../generated/graphql';
 import { useCharacterStore } from '../store/characterStore';
 import { CharacterFilters } from './CharacterFilters';
 import { Pagination } from './Pagination';
 import '../styles/CharactersList.css';
 import '../styles/Pagination.css';
-import type { GetCharactersQuery, GetCharactersQueryVariables } from '../generated/graphql';
 
 export function CharactersList() {
   const [page, setPage] = useState(1);
   const { sortBy, filterBySpecies, filterByStatus } = useCharacterStore();
-  const { data, loading, error } = useQuery<GetCharactersQuery, GetCharactersQueryVariables>(GetCharactersDocument, {
+  const { data, loading, error } = useGetCharactersQuery({
     variables: { page },
     notifyOnNetworkStatusChange: true,
   });
 
-  type CharacterResult = NonNullable<NonNullable<GetCharactersQuery['characters']>['results']>[number];
-  const rawResults = (data?.characters?.results ?? []) as CharacterResult[];
+//   type CharacterResult = NonNullable<NonNullable<GetCharactersQuery['characters']>['results']>[number];
+//   const rawResults = (data?.characters?.results ?? []) as CharacterResult[];
+  const rawResults = (data?.characters?.results ?? []);
 
   // Filter and sort locally without refetching
   const filteredAndSorted = useMemo(() => {
