@@ -4,7 +4,9 @@ import { useQuery } from '@apollo/client/react';
 import { GetCharactersDocument } from '../generated/graphql';
 import { useCharacterStore } from '../store/characterStore';
 import { CharacterFilters } from './CharacterFilters';
+import { Pagination } from './Pagination';
 import '../styles/CharactersList.css';
+import '../styles/Pagination.css';
 import type { GetCharactersQuery, GetCharactersQueryVariables } from '../generated/graphql';
 
 export function CharactersList() {
@@ -82,25 +84,13 @@ export function CharactersList() {
             ) : null))}
           </ul>
 
-          <div className="pagination" role="navigation" aria-label="Characters pagination">
-            <button
-              className="page-btn"
-              onClick={() => setPage((p) => Math.max(1, p - 1))}
-              disabled={!prevPage || page === 1}
-            >
-              ← Prev
-            </button>
-
-            <span className="page-label">Page {page} {data?.characters?.info?.pages ? `of ${data.characters.info.pages}` : null}</span>
-
-            <button
-              className="page-btn"
-              onClick={() => setPage((p) => p + 1)}
-              disabled={!nextPage}
-            >
-              Next →
-            </button>
-          </div>
+          <Pagination
+            page={page}
+            onPageChange={setPage}
+            totalPages={data?.characters?.info?.pages ?? null}
+            hasNextPage={!!nextPage}
+            hasPrevPage={!!prevPage}
+          />
         </>
       )}
     </>

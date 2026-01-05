@@ -1,0 +1,33 @@
+/* Pagination component styles */
+.pagination {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.page-btn {
+  padding: 8px 12px;
+  background: #111827;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 120ms ease, transform 120ms ease;
+}
+
+.page-btn:hover:not(:disabled) {
+  background: #374151;
+  transform: translateY(-2px);
+}
+
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.page-label {
+  font-weight: 600;
+  color: #374151;
+}
