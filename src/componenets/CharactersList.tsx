@@ -15,8 +15,6 @@ export function CharactersList() {
     notifyOnNetworkStatusChange: true,
   });
 
-//   type CharacterResult = NonNullable<NonNullable<GetCharactersQuery['characters']>['results']>[number];
-//   const rawResults = (data?.characters?.results ?? []) as CharacterResult[];
   const rawResults = (data?.characters?.results ?? []);
 
   // Filter and sort locally without refetching
@@ -82,16 +80,15 @@ export function CharactersList() {
               </li>
             ) : null))}
           </ul>
-
-          <Pagination
+        </>
+      )}
+        <Pagination
             page={page}
             onPageChange={setPage}
             totalPages={data?.characters?.info?.pages ?? null}
             hasNextPage={!!nextPage}
             hasPrevPage={!!prevPage}
-          />
-        </>
-      )}
+        />
     </>
   );
 };
