@@ -1,8 +1,7 @@
-import React from 'react';
 import { useCharacterStore, type SortOption, type FilterOption, type StatusFilter } from '../store/characterStore';
 import '../styles/CharacterFilters.css';
 
-export const CharacterFilters: React.FC = () => {
+export function CharacterFilters() {
   const { sortBy, filterBySpecies, filterByStatus, setSortBy, setFilterBySpecies, setFilterByStatus, reset } = useCharacterStore();
 
   const speciesOptions: FilterOption[] = ['all', 'Human', 'Alien', 'Humanoid', 'Robot', 'Poopybutthole', 'Mythological Creature', 'Unknown'];

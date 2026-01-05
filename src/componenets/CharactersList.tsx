@@ -1,5 +1,5 @@
 // src/components/CharactersList.tsx
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { useQuery } from '@apollo/client/react';
 import { GetCharactersDocument } from '../generated/graphql';
 import { useCharacterStore } from '../store/characterStore';
@@ -7,7 +7,7 @@ import { CharacterFilters } from './CharacterFilters';
 import '../styles/CharactersList.css';
 import type { GetCharactersQuery, GetCharactersQueryVariables } from '../generated/graphql';
 
-export const CharactersList: React.FC = () => {
+export function CharactersList() {
   const [page, setPage] = useState(1);
   const { sortBy, filterBySpecies, filterByStatus } = useCharacterStore();
   const { data, loading, error } = useQuery<GetCharactersQuery, GetCharactersQueryVariables>(GetCharactersDocument, {
