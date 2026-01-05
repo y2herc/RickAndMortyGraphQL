@@ -1,12 +1,16 @@
 // src/apollo.ts
-import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+import { ApolloClient, InMemoryCache, HttpLink, ApolloLink } from '@apollo/client';
 
 const httpLink = new HttpLink({ uri: import.meta.env.VITE_GRAPHQL_URL });
 
-const authLink = setContext((_, { headers }) => {
+const authLink = new ApolloLink((operation, forward) => {
   const token = localStorage.getItem('token');
-  return { headers: { ...headers, authorization: token ? `Bearer ${token}` : '' } };
+  operation.setContext({
+    headers: {
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  });
+  return forward(operation);
 });
 
 export const client = new ApolloClient({
